@@ -44,6 +44,7 @@
             Grid.Column="1"
             Grid.ColumnSpan="2"
             Height="45"
+            Margin="0,0,0,25"
             HorizontalContentAlignment="Center"
             VerticalContentAlignment="Center"
             Background="Transparent"
@@ -52,11 +53,11 @@
         <Label
             Grid.Row="3"
             Grid.Column="1"
-            Margin="0,10,0,0"
             VerticalAlignment="Top"
             Content="Search for Plants"
             FontSize="18"
-            FontWeight="SemiBold" />
+            FontWeight="SemiBold"
+            Foreground="#668239" />
         <Image
             Grid.Row="1"
             Grid.Column="3"
@@ -78,7 +79,7 @@
             Grid.Column="3"
             Width="100"
             Height="40"
-            Margin="0,20,0,0"
+            Margin="0,30,0,0"
             HorizontalAlignment="Center"
             VerticalAlignment="top"
             Background="Transparent"
@@ -109,12 +110,25 @@
             Grid.Column="3"
             Width="100"
             Height="40"
-            Margin="0,0,0,20"
             HorizontalAlignment="Center"
             VerticalAlignment="Bottom"
             Background="Transparent"
             BorderBrush="#668239"
             Content="Add Plant"
+            FontSize="20"
+            FontWeight="Bold"
+            Foreground="#668239" />
+        <Button
+            Name="btnSearch"
+            Grid.Row="3"
+            Grid.Column="1"
+            Width="100"
+            Height="40"
+            HorizontalAlignment="Left"
+            VerticalAlignment="bottom"
+            Background="Transparent"
+            BorderBrush="#668239"
+            Content="Search"
             FontSize="20"
             FontWeight="Bold"
             Foreground="#668239" />

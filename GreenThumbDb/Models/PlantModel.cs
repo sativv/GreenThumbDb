@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Markup;
 
 namespace GreenThumbDb.Models
 {
@@ -12,8 +13,10 @@ namespace GreenThumbDb.Models
         [Key]
         public int PlantId { get; set; }
         public string Name { get; set; } = null!;
-        public InstructionModel Instruction { get; set; } = null!;
 
-        public GardenModel MyProperty { get; set; }
+        public int instructionId { get; set; }
+        public List<InstructionModel> Instructions { get; set; } = new();
+
+        public List<GardenPlantModel> GardenPlant { get; set; } = new();
     }
 }

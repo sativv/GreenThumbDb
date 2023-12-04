@@ -12,9 +12,11 @@ namespace GreenThumbDb.Models
         [Key]
         public int GardenId { get; set; }
         public string Name { get; set; } = null!;
+        public int UserId { get; set; }
         public UserModel User { get; set; } = null!;
 
-        public List<GardenModel> Garden { get; set; } = new();
+        public List<GardenPlantModel> GardenPlant { get; set; } = new();
+
 
     }
 }

@@ -32,13 +32,24 @@ namespace GreenThumbDb.Database
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<GardenPlantModel>().HasKey(gp => new { gp.Plant, gp.GardenId });
+            modelBuilder.Entity<GardenPlantModel>().HasKey(gp => new { gp.PlantId, gp.GardenId });
 
             modelBuilder.UseEncryption(_provider);
 
+
+
         }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+
+            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=GreenThumbDb;trusted_connection=true");
+
+
+        }
+
+
+
     }
-
-
-
 }

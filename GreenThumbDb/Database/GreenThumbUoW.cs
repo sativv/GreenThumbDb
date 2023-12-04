@@ -9,11 +9,15 @@ namespace GreenThumbDb.Database
     public class GreenThumbUoW
     {
         private readonly GreenThumbDbContext _context;
+        public PlantRepository plantRepository { get; }
+        public GardenRepository gardenRepository { get; }
 
         public GreenThumbUoW(GreenThumbDbContext context)
         {
             _context = context;
 
+            plantRepository = new(context);
+            gardenRepository = new(context);
         }
 
         public async Task Complete()
@@ -21,4 +25,6 @@ namespace GreenThumbDb.Database
             await _context.SaveChangesAsync();
         }
     }
+
 }
+

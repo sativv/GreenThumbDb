@@ -13,5 +13,8 @@ namespace GreenThumbDb.Models
         [Key]
         public int InstructionId { get; set; }
         public string Instruction { get; set; } = null!;
+
+        public int plantId { get; set; }
+        public PlantModel Plant { get; set; } = null!;
     }
 }

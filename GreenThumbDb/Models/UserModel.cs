@@ -18,6 +18,6 @@ namespace GreenThumbDb.Models
         [EncryptColumn]
         public string Password { get; set; } = null!;
 
-        public GardenModel Garcden { get; set; } = null!;
+        public GardenModel Garden { get; set; } = null!;
     }
 }
