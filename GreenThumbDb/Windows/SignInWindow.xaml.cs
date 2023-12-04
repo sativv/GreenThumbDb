@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GreenThumbDb.Database;
+using GreenThumbDb.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,14 +21,52 @@ namespace GreenThumbDb.Windows
     /// </summary>
     public partial class SignInWindow : Window
     {
+
         public SignInWindow()
         {
             InitializeComponent();
         }
 
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        private async void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            btnLogin.IsEnabled = false;
+            string username = txtUsername.Text;
+            string password = txtPassword.Password;
 
+
+            if (string.IsNullOrEmpty(username))
+            {
+                MessageBox.Show("Please enter a username");
+            }
+            else if (string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Please enter a password");
+            }
+            else
+            {
+
+
+                using (GreenThumbDbContext context = new())
+                {
+                    GreenThumbUoW uow = new(context);
+
+                    var userList = await uow.userRepository.GetAllUsers();
+
+
+                    foreach (UserModel user in userList)
+                    {
+                        if (user.Username == username && user.Password == password)
+                        {
+                            MyGardenWindow myGardenWindow = new(user);
+                            MessageBox.Show($"Welcome {user.Username}!");
+                            myGardenWindow.Show();
+
+                            Close();
+                        }
+                    }
+                }
+            }
+            btnLogin.IsEnabled = true;
         }
     }
 }

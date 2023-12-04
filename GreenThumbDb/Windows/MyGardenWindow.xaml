@@ -37,7 +37,8 @@
             Grid.Column="1"
             Grid.ColumnSpan="2"
             Background="Transparent"
-            BorderBrush="#668239" />
+            BorderBrush="#668239"
+                  SelectionChanged="lstPlantList_SelectionChanged" />
         <Image
             Grid.Row="1"
             Grid.Column="3"

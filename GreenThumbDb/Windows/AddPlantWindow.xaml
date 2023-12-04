@@ -42,7 +42,7 @@
             Grid.Column="1"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
-            Content="Plant Name"
+            Content="Plant info"
             FontSize="20"
             FontWeight="SemiBold" />
         <Button

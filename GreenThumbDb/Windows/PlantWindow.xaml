@@ -37,7 +37,8 @@
             Grid.Column="1"
             Grid.ColumnSpan="2"
             Background="Transparent"
-            BorderBrush="#668239" />
+            BorderBrush="#668239"
+                  SelectionChanged="lstPlantList_SelectionChanged_1" />
         <TextBox
             Name="txtSearchPlant"
             Grid.Row="3"
@@ -49,7 +50,8 @@
             VerticalContentAlignment="Center"
             Background="Transparent"
             BorderBrush="#668239"
-            Foreground="#668239" />
+            Foreground="#668239"
+            TextChanged="txtSearchPlant_TextChanged" />
         <Label
             Grid.Row="3"
             Grid.Column="1"
@@ -87,7 +89,8 @@
             Content="Plant Info"
             FontSize="20"
             FontWeight="Bold"
-            Foreground="#668239" />
+            Foreground="#668239"
+                Click="btnPlantInfo_Click" />
         <Button
             Name="btnRemove"
             Grid.Row="2"
@@ -128,6 +131,7 @@
             VerticalAlignment="bottom"
             Background="Transparent"
             BorderBrush="#668239"
+            Click="btnSearch_Click"
             Content="Search"
             FontSize="20"
             FontWeight="Bold"

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GreenThumbDb.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,14 +20,31 @@ namespace GreenThumbDb.Windows
     /// </summary>
     public partial class PlantDetailsWindow : Window
     {
-        public PlantDetailsWindow()
+        public PlantDetailsWindow(UserModel user, PlantModel selectedPlant)
         {
+            currentUser = user;
+            currentPlant = selectedPlant;
+
             InitializeComponent();
+            FillFieldsAsync();
         }
 
+        private void FillFieldsAsync()
+        {
+            txtPlantInfo.Text = currentPlant.Instructions.ToString();
+            txtPlantName.Text = currentPlant.Name;
+        }
+        PlantModel currentPlant = new();
+        public UserModel currentUser { get; }
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
+            MyGardenWindow myGardenWindow = new(currentUser);
+            myGardenWindow.Show();
+            Close();
 
         }
+
+
+
     }
 }
