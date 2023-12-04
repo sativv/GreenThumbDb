@@ -17,6 +17,10 @@ namespace GreenThumbDb.Database
         }
 
 
+        public async Task AddGarden(GardenModel gardenToAdd)
+        {
+            await _context.Gardens.AddAsync(gardenToAdd);
+        }
 
 
         public async Task<PlantModel?> GetById(int id)

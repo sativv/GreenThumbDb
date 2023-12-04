@@ -120,7 +120,8 @@
             Content="Add Plant"
             FontSize="20"
             FontWeight="Bold"
-            Foreground="#668239" />
+            Foreground="#668239"
+                Click="btnAddPlant_Click" />
         <Button
             Name="btnSearch"
             Grid.Row="3"

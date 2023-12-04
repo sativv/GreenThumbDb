@@ -40,6 +40,11 @@ namespace GreenThumbDb.Database
         }
 
 
+        public async Task AddPlant(PlantModel plantToAdd)
+        {
+            await _context.Plants.AddAsync(plantToAdd);
+        }
+
 
     }
 }

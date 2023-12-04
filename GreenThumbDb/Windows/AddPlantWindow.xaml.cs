@@ -1,4 +1,7 @@
-﻿using System;
+﻿using GreenThumbDb.Database;
+using GreenThumbDb.Models;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,13 +22,66 @@ namespace GreenThumbDb.Windows
     /// </summary>
     public partial class AddPlantWindow : Window
     {
-        public AddPlantWindow()
+        public AddPlantWindow(UserModel user)
         {
+            currentUser = user;
             InitializeComponent();
         }
+        UserModel currentUser = new();
 
-        private void btnAddPlant_Click(object sender, RoutedEventArgs e)
+        private async void btnAddPlant_Click(object sender, RoutedEventArgs e)
         {
+
+
+            string plantName = txtPlantName.Text;
+            string instruction = txtPlantInfo.Text;
+
+            if (string.IsNullOrEmpty(plantName))
+            {
+                MessageBox.Show("Please enter a plant name");
+
+            }
+            else if (string.IsNullOrEmpty(instruction))
+            {
+                MessageBox.Show("Please enter an instrutction");
+            }
+            else
+            {
+
+                using (GreenThumbDbContext context = new())
+                {
+                    GreenThumbUoW uow = new(context);
+
+                    PlantModel newPlant = new()
+                    {
+                        Name = plantName,
+
+                    };
+                    await uow.plantRepository.AddPlant(newPlant);
+                    await uow.Complete();
+
+                    InstructionModel newInstruction = new()
+                    {
+                        Instruction = instruction,
+                        plantId = newPlant.PlantId
+                    };
+
+                    await uow.instructionRepository.AddInstruction(newInstruction);
+                    await uow.Complete();
+
+                    newPlant.instructionId = newInstruction.InstructionId;
+                    await uow.Complete();
+
+
+
+                    MessageBox.Show($"{newPlant.Name} has been added!");
+                    PlantWindow plantWindow = new(currentUser);
+                    plantWindow.Show();
+                    Close();
+                }
+
+            }
+
 
         }
     }

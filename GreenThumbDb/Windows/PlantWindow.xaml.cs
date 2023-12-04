@@ -107,5 +107,12 @@ namespace GreenThumbDb.Windows
             plantDetailsWindow.Show();
             Close();
         }
+
+        private void btnAddPlant_Click(object sender, RoutedEventArgs e)
+        {
+            AddPlantWindow addPlantWindow = new(currentUser);
+            addPlantWindow.Show();
+            Close();
+        }
     }
 }

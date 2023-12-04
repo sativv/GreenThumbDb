@@ -39,8 +39,8 @@ namespace GreenThumbDb.Windows
         public UserModel currentUser { get; }
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
-            MyGardenWindow myGardenWindow = new(currentUser);
-            myGardenWindow.Show();
+            PlantWindow plantWindow = new(currentUser);
+            plantWindow.Show();
             Close();
 
         }

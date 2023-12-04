@@ -69,8 +69,15 @@ namespace GreenThumbDb.Windows
                     = username,
                         Password = password
                     };
-
                     await uow.userRepository.AddUser(newUser);
+                    await uow.Complete();
+                    GardenModel newGarden = new()
+                    {
+                        Name = username + " garden",
+                        UserId = newUser.UserId
+                    };
+                    await uow.gardenRepository.AddGarden(newGarden);
+
 
                     MessageBox.Show($"Welcome to Green Thumb Gardening {username}");
                     SignInWindow signInWindow = new SignInWindow();
