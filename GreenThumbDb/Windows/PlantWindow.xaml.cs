@@ -55,20 +55,30 @@ namespace GreenThumbDb.Windows
 
         }
 
-        private void txtSearchPlant_TextChanged(object sender, TextChangedEventArgs e)
+        private async void txtSearchPlant_TextChanged(object sender, TextChangedEventArgs e)
         {
+            lstPlantList.Items.Clear();
             string searchString = txtSearchPlant.Text;
 
-            using (GreenThumbDbContext context = new GreenThumbDbContext())
+            using (GreenThumbDbContext context = new())
             {
                 GreenThumbUoW uow = new(context);
+                var plantList = await uow.plantRepository.GetAllPlants();
 
-                var plantList = uow.plantRepository.GetAllPlants();
+                var filteredPlants = plantList.Where(plant => plant.Name.Contains(searchString)).ToList();
 
-                // FIX SEARCHBAR FUNCTIONALITY
-
-
+                if (filteredPlants != null)
+                {
+                    foreach (var plant in filteredPlants)
+                    {
+                        ListViewItem plantItem = new();
+                        plantItem.Tag = plant;
+                        plantItem.Content = plant.Name;
+                        lstPlantList.Items.Add(plantItem);
+                    }
+                }
             }
+
         }
 
 
@@ -101,11 +111,18 @@ namespace GreenThumbDb.Windows
 
         private void btnPlantInfo_Click(object sender, RoutedEventArgs e)
         {
-            ListViewItem selectedItem = (ListViewItem)lstPlantList.SelectedItem;
-            PlantModel selectedPlant = (PlantModel)selectedItem.Tag;
-            PlantDetailsWindow plantDetailsWindow = new(currentUser, selectedPlant);
-            plantDetailsWindow.Show();
-            Close();
+            if (lstPlantList.SelectedItem != null)
+            {
+                ListViewItem selectedItem = (ListViewItem)lstPlantList.SelectedItem;
+                PlantModel selectedPlant = (PlantModel)selectedItem.Tag;
+                PlantDetailsWindow plantDetailsWindow = new(currentUser, selectedPlant);
+                plantDetailsWindow.Show();
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Please select a plant");
+            }
         }
 
         private void btnAddPlant_Click(object sender, RoutedEventArgs e)
@@ -114,5 +131,7 @@ namespace GreenThumbDb.Windows
             addPlantWindow.Show();
             Close();
         }
+
+
     }
 }

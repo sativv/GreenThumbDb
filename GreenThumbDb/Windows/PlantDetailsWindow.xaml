@@ -17,6 +17,7 @@
             <ColumnDefinition Width="20" />
 
             <ColumnDefinition />
+            <ColumnDefinition />
 
             <ColumnDefinition Width="20" />
         </Grid.ColumnDefinitions>
@@ -27,6 +28,13 @@
             <RowDefinition />
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
+        <ListView
+            Name="lstInstructions"
+            Grid.Row="1"
+            Grid.RowSpan="2"
+            Grid.Column="2"
+            Background="Transparent"
+            BorderBrush="#668239" />
 
 
 
@@ -46,7 +54,7 @@
             Content="Plant Info"
             FontSize="20"
             FontWeight="SemiBold" />
-        <Button
+        <!--<Button
             Name="btnSaveChanges"
             Grid.Row="3"
             Grid.Column="1"
@@ -61,8 +69,8 @@
             FontSize="20"
             FontWeight="Bold"
             Foreground="#668239"
-            Visibility="Hidden" />
-        <Button
+            Visibility="Hidden" />-->
+        <!--<Button
             Name="btnEditPlant"
             Grid.Row="3"
             Grid.Column="1"
@@ -77,14 +85,13 @@
             FontSize="20"
             FontWeight="Bold"
             Foreground="#668239"
-            Visibility="Visible" />
+            Visibility="Visible" />-->
         <Button
             Name="btnReturn"
             Grid.Row="3"
             Grid.Column="1"
             Width="100"
             Height="40"
-            Margin="0,0,120,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Background="Transparent"

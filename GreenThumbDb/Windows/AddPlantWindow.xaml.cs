@@ -22,11 +22,19 @@ namespace GreenThumbDb.Windows
     /// </summary>
     public partial class AddPlantWindow : Window
     {
+        List<InstructionModel> instructions = new();
         public AddPlantWindow(UserModel user)
         {
             currentUser = user;
             InitializeComponent();
+
+            FillListView();
+            FillSecondListView();
         }
+
+
+
+
         UserModel currentUser = new();
 
         private async void btnAddPlant_Click(object sender, RoutedEventArgs e)
@@ -34,16 +42,16 @@ namespace GreenThumbDb.Windows
 
 
             string plantName = txtPlantName.Text;
-            string instruction = txtPlantInfo.Text;
+
 
             if (string.IsNullOrEmpty(plantName))
             {
                 MessageBox.Show("Please enter a plant name");
 
             }
-            else if (string.IsNullOrEmpty(instruction))
+            else if (instructions.Count == 0)
             {
-                MessageBox.Show("Please enter an instrutction");
+                MessageBox.Show("Please enter an instruction");
             }
             else
             {
@@ -51,6 +59,19 @@ namespace GreenThumbDb.Windows
                 using (GreenThumbDbContext context = new())
                 {
                     GreenThumbUoW uow = new(context);
+                    var plantList = await uow.plantRepository.GetAllPlants();
+
+                    foreach (var plant in plantList)
+                    {
+                        if (plant.Name == plantName)
+                        {
+                            MessageBox.Show("That plant already exists in the database");
+                            return;
+                        }
+                    }
+
+
+
 
                     PlantModel newPlant = new()
                     {
@@ -60,9 +81,11 @@ namespace GreenThumbDb.Windows
                     await uow.plantRepository.AddPlant(newPlant);
                     await uow.Complete();
 
+                    // ADD AN INSTRUCTION FOR EACH ITEM IN LISTVIEW
+
                     InstructionModel newInstruction = new()
                     {
-                        Instruction = instruction,
+
                         plantId = newPlant.PlantId
                     };
 
@@ -78,11 +101,63 @@ namespace GreenThumbDb.Windows
                     PlantWindow plantWindow = new(currentUser);
                     plantWindow.Show();
                     Close();
+
                 }
 
             }
 
 
         }
+
+
+
+        private async void FillListView()
+        {
+
+            using (GreenThumbDbContext context = new())
+            {
+                GreenThumbUoW uow = new(context);
+
+                var instructionList = await uow.instructionRepository.GetAllInstructions();
+
+                foreach (var instruction in instructionList)
+                {
+                    ListViewItem item = new();
+                    item.Tag = instruction;
+                    item.Content = instruction.Instruction;
+                    lstInstructionsList.Items.Add(item);
+                }
+            }
+        }
+        private void FillSecondListView()
+        {
+            foreach (var instruction in instructions)
+            {
+                ListViewItem instructionItem = new();
+                instructionItem.Tag = instruction;
+                instructionItem.Content = instruction.Instruction;
+                lstPlantInstructionsAdded.Items.Add(instructionItem);
+            }
+        }
+        private void btnReturn_Click(object sender, RoutedEventArgs e)
+        {
+            PlantWindow plantWindow = new(currentUser);
+            plantWindow.Show();
+            Close();
+        }
+
+        private void btnAddInstruction_Click(object sender, RoutedEventArgs e)
+        {
+            ListViewItem itemToAdd = (ListViewItem)lstInstructionsList.SelectedItem;
+            if (itemToAdd != null)
+            {
+                InstructionModel instructionToAdd = (InstructionModel)itemToAdd.Tag;
+                instructions.Add(instructionToAdd);
+
+            }
+            FillSecondListView();
+
+        }
     }
 }
+

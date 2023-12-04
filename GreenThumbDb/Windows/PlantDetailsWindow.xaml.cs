@@ -11,6 +11,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -28,6 +29,15 @@ namespace GreenThumbDb.Windows
 
             InitializeComponent();
             FillFieldsAsync();
+            FillListAsync();
+        }
+
+        private void FillListAsync()
+        {
+            using (GreenThumbDbContext context = new())
+            {
+
+            }
         }
 
         private void FillFieldsAsync()
@@ -45,13 +55,22 @@ namespace GreenThumbDb.Windows
 
         }
 
-        private void btnAddToGarden_Click(object sender, RoutedEventArgs e)
+        private async void btnAddToGarden_Click(object sender, RoutedEventArgs e)
         {
             PlantModel plantToAdd = currentPlant;
+
+
 
             using (GreenThumbDbContext context = new())
             {
                 GreenThumbUoW uow = new(context);
+                if (plantToAdd != null)
+                {
+
+                    await uow.gardenRepository.AddPlantToGarden(plantToAdd);
+                }
+                MessageBox.Show($"{plantToAdd.Name} was added to your garden!");
+                await uow.Complete();
             }
         }
     }

@@ -102,6 +102,7 @@
             VerticalAlignment="Bottom"
             Background="Transparent"
             BorderBrush="Red"
+            Click="btnRemove_Click"
             Content="Remove"
             FontSize="20"
             FontWeight="Bold"
@@ -117,25 +118,11 @@
             VerticalAlignment="Bottom"
             Background="Transparent"
             BorderBrush="#668239"
+            Click="btnAddPlant_Click"
             Content="Add Plant"
             FontSize="20"
             FontWeight="Bold"
-            Foreground="#668239"
-                Click="btnAddPlant_Click" />
-        <Button
-            Name="btnSearch"
-            Grid.Row="3"
-            Grid.Column="1"
-            Width="100"
-            Height="40"
-            HorizontalAlignment="Left"
-            VerticalAlignment="bottom"
-            Background="Transparent"
-            BorderBrush="#668239"
-            Click="btnSearch_Click"
-            Content="Search"
-            FontSize="20"
-            FontWeight="Bold"
             Foreground="#668239" />
+
     </Grid>
 </Window>

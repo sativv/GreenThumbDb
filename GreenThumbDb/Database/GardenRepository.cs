@@ -36,5 +36,10 @@ namespace GreenThumbDb.Database
                 _context.Remove(plantToRemove);
             }
         }
+
+        public async Task AddPlantToGarden(PlantModel plantToAdd)
+        {
+            await _context.Plants.AddAsync(plantToAdd);
+        }
     }
 }

@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:GreenThumbDb.Windows"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="AddPlantWindow"
-    Width="500"
+    Width="600"
     Height="450"
     Background="White"
     ResizeMode="NoResize"
@@ -15,6 +15,7 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20" />
+            <ColumnDefinition />
             <ColumnDefinition />
 
             <ColumnDefinition Width="20" />
@@ -28,30 +29,71 @@
         </Grid.RowDefinitions>
 
 
+        <ListView
+            Name="lstInstructionsList"
+            Grid.Row="2"
+            Grid.RowSpan="1"
+            Grid.Column="1"
+            Background="Transparent"
+            BorderBrush="#668239" />
+        <ListView
+            Name="lstPlantInstructionsAdded"
+            Grid.Row="2"
+            Grid.RowSpan="1"
+            Grid.Column="2"
+            Background="Transparent"
+            BorderBrush="#668239" />
+        <Button
+            Name="btnAddInstruction"
+            Grid.Row="3"
+            Grid.Column="1"
+            Width="200"
+            Height="40"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Background="Transparent"
+            BorderBrush="#668239"
+            Click="btnAddInstruction_Click"
+            Content="Add Instruction"
+            FontSize="20"
+            FontWeight="Bold"
+            Foreground="#668239" />
+
 
         <Label
             Grid.Row="1"
             Grid.Column="1"
             HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Content="Plant Instructions"
+            FontSize="20"
+            FontWeight="SemiBold" />
+        <Label
+            Grid.Row="1"
+            Grid.Column="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Content="Added Plant Instructions"
+            FontSize="20"
+            FontWeight="SemiBold" />
+
+        <Label
+            Grid.Row="1"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center"
             VerticalAlignment="Top"
             Content="Plant Name"
             FontSize="20"
             FontWeight="SemiBold" />
-        <Label
-            Grid.Row="2"
-            Grid.Column="1"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Top"
-            Content="Plant info"
-            FontSize="20"
-            FontWeight="SemiBold" />
+
         <Button
             Name="btnAddPlant"
             Grid.Row="3"
-            Grid.Column="1"
+            Grid.Column="2"
             Width="100"
             Height="40"
-            Margin="120,0,0,0"
+            Margin="0,0,120,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Background="Transparent"
@@ -64,14 +106,15 @@
         <Button
             Name="btnReturn"
             Grid.Row="3"
-            Grid.Column="1"
+            Grid.Column="2"
             Width="100"
             Height="40"
-            Margin="0,0,120,0"
+            Margin="120,0,0,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Background="Transparent"
             BorderBrush="#668239"
+            Click="btnReturn_Click"
             Content="Return"
             FontSize="20"
             FontWeight="Bold"
@@ -80,6 +123,7 @@
             Name="txtPlantName"
             Grid.Row="1"
             Grid.Column="1"
+            Grid.ColumnSpan=" 2"
             Width="250"
             Height="40"
             VerticalAlignment="Center"
@@ -89,19 +133,7 @@
             BorderBrush="#668239"
             FontSize="20"
             Foreground="#668239" />
-        <TextBox
-            Name="txtPlantInfo"
-            Grid.Row="2"
-            Grid.Column="1"
-            Width="250"
-            Height="40"
-            VerticalAlignment="Center"
-            HorizontalContentAlignment="Center"
-            VerticalContentAlignment="center"
-            Background="Transparent"
-            BorderBrush="#668239"
-            FontSize="20"
-            Foreground="#668239" />
+
 
     </Grid>
 </Window>
