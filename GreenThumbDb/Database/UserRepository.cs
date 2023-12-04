@@ -27,5 +27,12 @@ namespace GreenThumbDb.Database
         {
             return await _context.Users.FindAsync(id);
         }
+
+
+        public async Task AddUser(UserModel userToAdd)
+        {
+            await _context.Users.AddAsync(userToAdd);
+        }
+
     }
 }

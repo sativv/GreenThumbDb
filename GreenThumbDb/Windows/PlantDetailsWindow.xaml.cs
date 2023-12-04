@@ -1,4 +1,5 @@
-﻿using GreenThumbDb.Models;
+﻿using GreenThumbDb.Database;
+using GreenThumbDb.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,7 +45,14 @@ namespace GreenThumbDb.Windows
 
         }
 
+        private void btnAddToGarden_Click(object sender, RoutedEventArgs e)
+        {
+            PlantModel plantToAdd = currentPlant;
 
-
+            using (GreenThumbDbContext context = new())
+            {
+                GreenThumbUoW uow = new(context);
+            }
+        }
     }
 }

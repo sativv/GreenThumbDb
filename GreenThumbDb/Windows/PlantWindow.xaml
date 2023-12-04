@@ -8,7 +8,7 @@
     Title="PlantWindow"
     Width="500"
     Height="450"
-    Background="PaleGreen"
+    Background="White"
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
@@ -38,7 +38,7 @@
             Grid.ColumnSpan="2"
             Background="Transparent"
             BorderBrush="#668239"
-                  SelectionChanged="lstPlantList_SelectionChanged_1" />
+            SelectionChanged="lstPlantList_SelectionChanged_1" />
         <TextBox
             Name="txtSearchPlant"
             Grid.Row="3"
@@ -86,11 +86,11 @@
             VerticalAlignment="top"
             Background="Transparent"
             BorderBrush="#668239"
+            Click="btnPlantInfo_Click"
             Content="Plant Info"
             FontSize="20"
             FontWeight="Bold"
-            Foreground="#668239"
-                Click="btnPlantInfo_Click" />
+            Foreground="#668239" />
         <Button
             Name="btnRemove"
             Grid.Row="2"

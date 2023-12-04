@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GreenThumbDb.Database;
+using GreenThumbDb.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,11 +33,55 @@ namespace GreenThumbDb.Windows
             Close();
         }
 
-        private void btnRegister_Click(object sender, RoutedEventArgs e)
+        private async void btnRegister_Click(object sender, RoutedEventArgs e)
         {
-            SignInWindow signInWindow = new SignInWindow();
-            signInWindow.Show();
-            Close();
+            string username = txtUsername.Text;
+            string password = txtPassword.Password;
+
+
+            using (GreenThumbDbContext context = new())
+            {
+                GreenThumbUoW uow = new(context);
+                var userList = await uow.userRepository.GetAllUsers();
+
+                foreach (var user in userList)
+                {
+                    if (user.Username == username)
+                    {
+                        MessageBox.Show("Username already taken");
+                        return;
+                    }
+                }
+
+                if (string.IsNullOrEmpty(username))
+                {
+                    MessageBox.Show("Please enter a username");
+                }
+                else if (string.IsNullOrEmpty(password))
+                {
+                    MessageBox.Show("Please enter a password");
+                }
+                else
+                {
+                    UserModel newUser = new()
+                    {
+                        Username
+                    = username,
+                        Password = password
+                    };
+
+                    await uow.userRepository.AddUser(newUser);
+
+                    MessageBox.Show($"Welcome to Green Thumb Gardening {username}");
+                    SignInWindow signInWindow = new SignInWindow();
+                    signInWindow.Show();
+                    Close();
+                    await uow.Complete();
+
+                }
+
+
+            }
         }
     }
 }

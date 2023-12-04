@@ -8,7 +8,7 @@
     Title="SignInWindow"
     Width="500"
     Height="450"
-    Background="PaleGreen"
+    Background="White"
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">

@@ -65,6 +65,8 @@ namespace GreenThumbDb.Windows
 
                 var plantList = uow.plantRepository.GetAllPlants();
 
+                // FIX SEARCHBAR FUNCTIONALITY
+
 
             }
         }
