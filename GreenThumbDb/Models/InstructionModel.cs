@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GreenThumbDb.Database
+namespace GreenThumbDb.Models
 {
-    public class GreenThumbUoW
+    public class InstructionModel
     {
     }
 }
