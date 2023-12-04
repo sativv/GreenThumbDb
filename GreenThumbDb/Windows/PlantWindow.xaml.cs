@@ -15,25 +15,13 @@ using System.Windows.Shapes;
 namespace GreenThumbDb.Windows
 {
     /// <summary>
-    /// Interaction logic for MyGardenWindow.xaml
+    /// Interaction logic for PlantWindow.xaml
     /// </summary>
-    public partial class MyGardenWindow : Window
+    public partial class PlantWindow : Window
     {
-        public MyGardenWindow()
+        public PlantWindow()
         {
             InitializeComponent();
-        }
-
-        private void btnBrowsePlants_Click(object sender, RoutedEventArgs e)
-        {
-            PlantWindow plantWindow = new PlantWindow();
-            plantWindow.Show();
-            Close();
-        }
-
-        private void btnRemove_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

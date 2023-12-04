@@ -13,7 +13,7 @@ namespace GreenThumbDb.Models
     {
         [Key]
         public int UserId { get; set; }
-        public string Name { get; set; } = null!;
+        public string Username { get; set; } = null!;
 
         [EncryptColumn]
         public string Password { get; set; } = null!;

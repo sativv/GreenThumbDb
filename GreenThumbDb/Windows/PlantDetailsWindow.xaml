@@ -89,11 +89,25 @@
             VerticalAlignment="Center"
             Background="Transparent"
             BorderBrush="#668239"
+            Click="btnReturn_Click"
             Content="Return"
             FontSize="20"
             FontWeight="Bold"
-            Foreground="#668239"
-                Click="btnReturn_Click" />
+            Foreground="#668239" />
+        <Button
+            Name="btnAddToGarden"
+            Grid.Row="3"
+            Grid.Column="1"
+            Width="220"
+            Height="35"
+            HorizontalAlignment="Center"
+            VerticalAlignment="bottom"
+            Background="Transparent"
+            BorderBrush="#668239"
+            Content="Add To Your Garden"
+            FontSize="20"
+            FontWeight="Bold"
+            Foreground="#668239" />
         <TextBox
             Name="txtPlantName"
             Grid.Row="2"

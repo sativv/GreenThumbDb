@@ -33,7 +33,9 @@ namespace GreenThumbDb.Windows
 
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
-
+            SignInWindow signInWindow = new SignInWindow();
+            signInWindow.Show();
+            Close();
         }
     }
 }

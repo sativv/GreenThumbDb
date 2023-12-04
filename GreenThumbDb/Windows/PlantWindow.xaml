@@ -1,11 +1,11 @@
 ﻿<Window
-    x:Class="GreenThumbDb.Windows.MyGardenWindow"
+    x:Class="GreenThumbDb.Windows.PlantWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:GreenThumbDb.Windows"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="MyGardenWindow"
+    Title="PlantWindow"
     Width="500"
     Height="450"
     Background="PaleGreen"
@@ -33,11 +33,30 @@
         <ListView
             Name="lstPlantList"
             Grid.Row="1"
-            Grid.RowSpan="3"
+            Grid.RowSpan="2"
             Grid.Column="1"
             Grid.ColumnSpan="2"
             Background="Transparent"
             BorderBrush="#668239" />
+        <TextBox
+            Name="txtSearchPlant"
+            Grid.Row="3"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Height="45"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            Background="Transparent"
+            BorderBrush="#668239"
+            Foreground="#668239" />
+        <Label
+            Grid.Row="3"
+            Grid.Column="1"
+            Margin="0,10,0,0"
+            VerticalAlignment="Top"
+            Content="Search for Plants"
+            FontSize="18"
+            FontWeight="SemiBold" />
         <Image
             Grid.Row="1"
             Grid.Column="3"
@@ -48,7 +67,7 @@
             Grid.Row="1"
             Grid.Column="3"
             HorizontalAlignment="Center"
-            Content="Your Garden"
+            Content="Browse Plants"
             FontSize="20"
             FontWeight="SemiBold"
             Foreground="#668239" />
@@ -69,22 +88,6 @@
             FontWeight="Bold"
             Foreground="#668239" />
         <Button
-            Name="btnBrowsePlants"
-            Grid.Row="3"
-            Grid.Column="3"
-            Width="100"
-            Height="40"
-            Margin="0,0,0,5"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Bottom"
-            Background="Transparent"
-            BorderBrush="#668239"
-            Click="btnBrowsePlants_Click"
-            Content="Browse"
-            FontSize="20"
-            FontWeight="Bold"
-            Foreground="#668239" />
-        <Button
             Name="btnRemove"
             Grid.Row="2"
             Grid.Column="3"
@@ -95,12 +98,25 @@
             VerticalAlignment="Bottom"
             Background="Transparent"
             BorderBrush="Red"
-            Click="btnRemove_Click"
             Content="Remove"
             FontSize="20"
             FontWeight="Bold"
             Foreground="#668239"
             Visibility="Hidden" />
-
+        <Button
+            Name="btnAddPlant"
+            Grid.Row="3"
+            Grid.Column="3"
+            Width="100"
+            Height="40"
+            Margin="0,0,0,20"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Background="Transparent"
+            BorderBrush="#668239"
+            Content="Add Plant"
+            FontSize="20"
+            FontWeight="Bold"
+            Foreground="#668239" />
     </Grid>
 </Window>
