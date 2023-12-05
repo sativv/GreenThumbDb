@@ -1,5 +1,6 @@
 ﻿using GreenThumbDb.Database;
 using GreenThumbDb.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,25 @@ namespace GreenThumbDb.Windows
         {
             InitializeComponent();
             currentUser = user;
+            FillList();
+        }
+
+        private void FillList()
+        {
+            using (GreenThumbDbContext context = new())
+            {
+                GreenThumbUoW uow = new(context);
+
+                var gardenPlantList = context.GardenPlants.Include(g => g.Garden).Include(g => g.Plant).Where(gp => gp.Garden.UserId == currentUser.UserId).ToList();
+
+                foreach (var gp in gardenPlantList)
+                {
+                    ListViewItem gpItem = new ListViewItem();
+                    gpItem.Tag = gp;
+                    gpItem.Content = gp.Plant.Name;
+                    lstPlantList.Items.Add(gpItem);
+                }
+            }
         }
 
         public UserModel currentUser { get; }
@@ -38,35 +58,37 @@ namespace GreenThumbDb.Windows
             Close();
         }
 
-        private void btnRemove_Click(object sender, RoutedEventArgs e)
-        {
-            ListViewItem itemToRemove = (ListViewItem)lstPlantList.SelectedItem;
+        //private async void btnRemove_Click(object sender, RoutedEventArgs e)
+        //{
+        //    ListViewItem itemToRemove = (ListViewItem)lstPlantList.SelectedItem;
 
-            using (GreenThumbDbContext context = new())
-            {
-                GreenThumbUoW uow = new(context);
+        //    using (GreenThumbDbContext context = new())
+        //    {
+        //        GreenThumbUoW uow = new(context);
 
-                if (itemToRemove != null)
-                {
+        //        if (itemToRemove != null)
+        //        {
+        //            GardenPlantModel modelToRemove = (GardenPlantModel)itemToRemove.Tag;
+        //            await uow.gardenPlantRepository.Remove(itemToRemove.);
 
-                }
-            }
+        //        }
+        //    }
 
 
-        }
+        //}
 
-        private void lstPlantList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (lstPlantList.SelectedIndex != -1)
-            {
-                btnRemove.Visibility = Visibility.Visible;
+        //private void lstPlantList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    if (lstPlantList.SelectedIndex != -1)
+        //    {
+        //        btnRemove.Visibility = Visibility.Visible;
 
-            }
-            else
-            {
-                btnRemove.Visibility = Visibility.Hidden;
-            }
-        }
+        //    }
+        //    else
+        //    {
+        //        btnRemove.Visibility = Visibility.Hidden;
+        //    }
+        //}
 
         private void btnPlantInfo_Click(object sender, RoutedEventArgs e)
         {

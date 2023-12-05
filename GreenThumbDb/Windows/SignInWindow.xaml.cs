@@ -28,6 +28,8 @@ namespace GreenThumbDb.Windows
             InitializeComponent();
         }
 
+
+        // logs in user
         private async void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             btnLogin.IsEnabled = false;
@@ -45,8 +47,6 @@ namespace GreenThumbDb.Windows
             }
             else
             {
-
-
                 using (GreenThumbDbContext context = new())
                 {
                     GreenThumbUoW uow = new(context);
@@ -64,6 +64,10 @@ namespace GreenThumbDb.Windows
                             myGardenWindow.Show();
 
                             Close();
+                        }
+                        else if (user.Username == username && user.Password != password)
+                        {
+                            MessageBox.Show("Incorrect password");
                         }
                     }
                 }

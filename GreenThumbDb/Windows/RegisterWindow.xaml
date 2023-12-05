@@ -26,8 +26,6 @@
             <RowDefinition />
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
-
-
         <Image
             Grid.Row="1"
             Grid.Column="1"
@@ -43,11 +41,11 @@
             VerticalAlignment="Center"
             Background="Transparent"
             BorderBrush="#668239"
+            Click="btnReturn_Click"
             Content="Return"
             FontSize="20"
             FontWeight="Bold"
-            Foreground="#668239"
-                Click="btnReturn_Click" />
+            Foreground="#668239" />
         <Button
             Name="btnRegister"
             Grid.Row="4"
@@ -59,11 +57,11 @@
             VerticalAlignment="Center"
             Background="Transparent"
             BorderBrush="#668239"
+            Click="btnRegister_Click"
             Content="Register"
             FontSize="20"
             FontWeight="Bold"
-            Foreground="#668239"
-                Click="btnRegister_Click" />
+            Foreground="#668239" />
         <Label
             Grid.Row="2"
             Grid.Column="1"

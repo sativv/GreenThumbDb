@@ -38,54 +38,8 @@
 
 
 
-        <Label
-            Grid.Row="1"
-            Grid.Column="1"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Top"
-            Content="Plant Name"
-            FontSize="20"
-            FontWeight="SemiBold" />
-        <!--<Label
-            Grid.Row="2"
-            Grid.Column="1"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Top"
-            Content="Plant Info"
-            FontSize="20"
-            FontWeight="SemiBold" />-->
-        <!--<Button
-            Name="btnSaveChanges"
-            Grid.Row="3"
-            Grid.Column="1"
-            Width="100"
-            Height="40"
-            Margin="120,0,0,0"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Background="Transparent"
-            BorderBrush="#668239"
-            Content="Save"
-            FontSize="20"
-            FontWeight="Bold"
-            Foreground="#668239"
-            Visibility="Hidden" />-->
-        <!--<Button
-            Name="btnEditPlant"
-            Grid.Row="3"
-            Grid.Column="1"
-            Width="100"
-            Height="40"
-            Margin="120,0,0,0"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Background="Transparent"
-            BorderBrush="#668239"
-            Content="Edit"
-            FontSize="20"
-            FontWeight="Bold"
-            Foreground="#668239"
-            Visibility="Visible" />-->
+
+
         <Button
             Name="btnReturn"
             Grid.Row="3"
@@ -116,34 +70,22 @@
             FontSize="20"
             FontWeight="Bold"
             Foreground="#668239" />
-        <!--<TextBox
-            Name="txtPlantInfo"
-            Grid.Row="2"
-            Grid.Column="1"
-            Width="250"
-            Height="40"
-            VerticalAlignment="Center"
-            HorizontalContentAlignment="Center"
-            VerticalContentAlignment="center"
-            Background="Transparent"
-            BorderBrush="#668239"
-            FontSize="20"
-            Foreground="#668239"
-            IsEnabled="False" />-->
+
         <TextBox
             Name="txtPlantName"
             Grid.Row="1"
             Grid.Column="1"
-            Width="250"
+            Width="220"
             Height="40"
-            VerticalAlignment="Center"
+            VerticalAlignment="top"
             HorizontalContentAlignment="Center"
             VerticalContentAlignment="center"
             Background="Transparent"
-            BorderBrush="#668239"
+            BorderBrush="Transparent"
             FontSize="20"
             Foreground="#668239"
-            IsEnabled="False" />
+            IsEnabled="False"
+            Text="HEJ" />
 
     </Grid>
 </Window>

@@ -1,4 +1,5 @@
 ﻿using GreenThumbDb.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GreenThumbDb.Database
 {
-    internal class GardenPlantRepository
+    public class GardenPlantRepository
     {
         private readonly GreenThumbDbContext _context;
 
@@ -16,8 +17,29 @@ namespace GreenThumbDb.Database
             _context = context;
         }
 
+        public async Task AddGardenPlant(GardenPlantModel gardenPlantToAdd)
+        {
+            await _context.GardenPlants.AddAsync(gardenPlantToAdd);
+        }
 
+        public async Task<List<GardenPlantModel>> GetAllGardenPlants()
+        {
+            return await _context.GardenPlants.ToListAsync();
+        }
 
+        //public async Task Remove(int id)
+        //{
+        //    GardenPlantModel? GardenPlantToRemove = await GetById(id);
+        //    if (GardenPlantToRemove != null)
+        //    {
+        //        _context.Remove(GardenPlantToRemove.PlantId);
+        //    }
+        //}
+
+        public async Task<GardenPlantModel?> GetById(int id)
+        {
+            return await _context.GardenPlants.FindAsync(id);
+        }
 
     }
 }

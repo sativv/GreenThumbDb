@@ -23,7 +23,7 @@ namespace GreenThumbDb.Windows
     /// </summary>
     public partial class AddPlantWindow : Window
     {
-        List<InstructionModel> instructions = new();
+
         List<string> instructionStrings = new();
         public AddPlantWindow(UserModel user)
         {

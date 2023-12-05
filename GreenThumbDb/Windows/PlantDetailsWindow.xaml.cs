@@ -25,6 +25,7 @@ namespace GreenThumbDb.Windows
     {
         public PlantDetailsWindow(UserModel user, PlantModel selectedPlant)
         {
+            currentUser = user;
 
             currentPlant = selectedPlant;
 
@@ -33,6 +34,11 @@ namespace GreenThumbDb.Windows
             FillListAsync();
         }
 
+        PlantModel currentPlant = new();
+        public UserModel currentUser { get; }
+
+
+        // fills the listview with the current plants instructions
         private void FillListAsync()
         {
             using (GreenThumbDbContext context = new())
@@ -50,13 +56,13 @@ namespace GreenThumbDb.Windows
             }
         }
 
+        // fills the textfield with the current plants name
         private void FillFieldsAsync()
         {
 
             txtPlantName.Text = currentPlant.Name;
         }
-        PlantModel currentPlant = new();
-        public UserModel currentUser { get; }
+        // returns user to plant window
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
             PlantWindow plantWindow = new(currentUser);
@@ -65,27 +71,45 @@ namespace GreenThumbDb.Windows
 
         }
 
+        // adds the current plant to the currently signed in users garden
         private async void btnAddToGarden_Click(object sender, RoutedEventArgs e)
         {
-            PlantModel plantToAdd = currentPlant;
-
-            var garden = currentUser.Garden.GardenId;
-
-
 
 
             using (GreenThumbDbContext context = new())
             {
                 GreenThumbUoW uow = new(context);
+
+                PlantModel plantToAdd = currentPlant;
+
+                var currentUserGarden = context.Gardens.Where(g => g.UserId == currentUser.UserId).FirstOrDefault();
+
+                int plant = currentPlant.PlantId;
+                if (currentUserGarden == null)
+                {
+                    return;
+                }
+
+                GardenPlantModel gardenPlantModel = new()
+                {
+                    PlantId = plant,
+                    GardenId = currentUserGarden.GardenId,
+                };
+
                 if (plantToAdd != null)
                 {
+                    await uow.gardenPlantRepository.AddGardenPlant(gardenPlantModel);
 
 
+                    MessageBox.Show($"{plantToAdd.Name} was added to your garden!");
 
                 }
-                MessageBox.Show($"{plantToAdd.Name} was added to your garden!");
+
                 await uow.Complete();
             }
+            MyGardenWindow gardenwindow = new(currentUser);
+            gardenwindow.Show();
+            Close();
         }
     }
 }
