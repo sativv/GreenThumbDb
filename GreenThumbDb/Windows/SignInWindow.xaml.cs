@@ -58,8 +58,8 @@ namespace GreenThumbDb.Windows
                     {
                         if (user.Username == username && user.Password == password)
                         {
-                            UserManager.signedinUser = user;
-                            MyGardenWindow myGardenWindow = new(UserManager.signedinUser);
+
+                            MyGardenWindow myGardenWindow = new(user);
                             MessageBox.Show($"Welcome {user.Username}!");
                             myGardenWindow.Show();
 
