@@ -1,4 +1,5 @@
 ﻿using GreenThumbDb.Database;
+using GreenThumbDb.Managers;
 using GreenThumbDb.Models;
 using System;
 using System.Collections.Generic;
@@ -57,7 +58,8 @@ namespace GreenThumbDb.Windows
                     {
                         if (user.Username == username && user.Password == password)
                         {
-                            MyGardenWindow myGardenWindow = new(user);
+                            UserManager.signedinUser = user;
+                            MyGardenWindow myGardenWindow = new(UserManager.signedinUser);
                             MessageBox.Show($"Welcome {user.Username}!");
                             myGardenWindow.Show();
 

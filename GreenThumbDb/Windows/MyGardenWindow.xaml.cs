@@ -67,5 +67,21 @@ namespace GreenThumbDb.Windows
                 btnRemove.Visibility = Visibility.Hidden;
             }
         }
+
+        private void btnPlantInfo_Click(object sender, RoutedEventArgs e)
+        {
+            if (lstPlantList.SelectedItem != null)
+            {
+                ListViewItem selectedItem = (ListViewItem)lstPlantList.SelectedItem;
+                PlantModel selectedPlant = (PlantModel)selectedItem.Tag;
+                PlantDetailsWindow plantDetailsWindow = new(currentUser, selectedPlant);
+                plantDetailsWindow.Show();
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Please select a plant");
+            }
+        }
     }
 }

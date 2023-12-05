@@ -30,6 +30,8 @@ namespace GreenThumbDb.Windows
 
         UserModel currentUser = new();
 
+
+        // Fills the listview with every existing plant in the database
         private async Task FillListAsync()
         {
             lstPlantList.Items.Clear();
@@ -49,12 +51,9 @@ namespace GreenThumbDb.Windows
             }
         }
 
-        private void btnSearch_Click(object sender, RoutedEventArgs e)
-        {
 
 
-        }
-
+        // Live searches through plants depending  on textinput
         private async void txtSearchPlant_TextChanged(object sender, TextChangedEventArgs e)
         {
             lstPlantList.Items.Clear();
@@ -65,7 +64,7 @@ namespace GreenThumbDb.Windows
                 GreenThumbUoW uow = new(context);
                 var plantList = await uow.plantRepository.GetAllPlants();
 
-                var filteredPlants = plantList.Where(plant => plant.Name.Contains(searchString)).ToList();
+                var filteredPlants = plantList.Where(plant => plant.Name.ToLower().Contains(searchString)).ToList();
 
                 if (filteredPlants != null)
                 {
@@ -81,7 +80,7 @@ namespace GreenThumbDb.Windows
 
         }
 
-
+        // removes plant from list
         private async void btnRemove_Click(object sender, RoutedEventArgs e)
         {
             ListViewItem itemToRemove = (ListViewItem)lstPlantList.SelectedItem;
@@ -103,12 +102,14 @@ namespace GreenThumbDb.Windows
 
         }
 
-
+        // shows remove button when an item is selected
         private void lstPlantList_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
             btnRemove.Visibility = Visibility.Visible;
         }
 
+
+        // sends the selected plantModel to a PlantDetailsWindow
         private void btnPlantInfo_Click(object sender, RoutedEventArgs e)
         {
             if (lstPlantList.SelectedItem != null)
@@ -125,6 +126,7 @@ namespace GreenThumbDb.Windows
             }
         }
 
+        // redirects to the AddPlant window
         private void btnAddPlant_Click(object sender, RoutedEventArgs e)
         {
             AddPlantWindow addPlantWindow = new(currentUser);

@@ -68,7 +68,8 @@
             Content="Plant Info"
             FontSize="20"
             FontWeight="Bold"
-            Foreground="#668239" />
+            Foreground="#668239"
+                Click="btnPlantInfo_Click" />
         <Button
             Name="btnBrowsePlants"
             Grid.Row="3"

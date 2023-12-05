@@ -26,6 +26,8 @@ namespace GreenThumbDb.Windows
             InitializeComponent();
         }
 
+
+        // returns to the main window
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new();
@@ -33,6 +35,7 @@ namespace GreenThumbDb.Windows
             Close();
         }
 
+        // reads input windows and registers user, checks if username is already taken.
         private async void btnRegister_Click(object sender, RoutedEventArgs e)
         {
             string username = txtUsername.Text;

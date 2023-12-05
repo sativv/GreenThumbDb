@@ -12,6 +12,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -23,13 +24,14 @@ namespace GreenThumbDb.Windows
     public partial class AddPlantWindow : Window
     {
         List<InstructionModel> instructions = new();
+        List<string> instructionStrings = new();
         public AddPlantWindow(UserModel user)
         {
             currentUser = user;
             InitializeComponent();
 
-            FillListView();
-            FillSecondListView();
+
+
         }
 
 
@@ -49,7 +51,7 @@ namespace GreenThumbDb.Windows
                 MessageBox.Show("Please enter a plant name");
 
             }
-            else if (instructions.Count == 0)
+            else if (instructionStrings.Count == 0)
             {
                 MessageBox.Show("Please enter an instruction");
             }
@@ -81,19 +83,23 @@ namespace GreenThumbDb.Windows
                     await uow.plantRepository.AddPlant(newPlant);
                     await uow.Complete();
 
-                    // ADD AN INSTRUCTION FOR EACH ITEM IN LISTVIEW
 
-                    InstructionModel newInstruction = new()
+                    foreach (var instructionString in instructionStrings)
                     {
 
-                        plantId = newPlant.PlantId
-                    };
+                        InstructionModel newInstruction = new()
+                        {
+                            Instruction = instructionString,
+                            plantId = newPlant.PlantId
+                        };
+                        await uow.instructionRepository.AddInstruction(newInstruction);
+                        await uow.Complete();
 
-                    await uow.instructionRepository.AddInstruction(newInstruction);
-                    await uow.Complete();
+                        newPlant.instructionId = newInstruction.InstructionId;
+                        await uow.Complete();
+                    }
 
-                    newPlant.instructionId = newInstruction.InstructionId;
-                    await uow.Complete();
+
 
 
 
@@ -111,34 +117,10 @@ namespace GreenThumbDb.Windows
 
 
 
-        private async void FillListView()
-        {
 
-            using (GreenThumbDbContext context = new())
-            {
-                GreenThumbUoW uow = new(context);
 
-                var instructionList = await uow.instructionRepository.GetAllInstructions();
 
-                foreach (var instruction in instructionList)
-                {
-                    ListViewItem item = new();
-                    item.Tag = instruction;
-                    item.Content = instruction.Instruction;
-                    lstInstructionsList.Items.Add(item);
-                }
-            }
-        }
-        private void FillSecondListView()
-        {
-            foreach (var instruction in instructions)
-            {
-                ListViewItem instructionItem = new();
-                instructionItem.Tag = instruction;
-                instructionItem.Content = instruction.Instruction;
-                lstPlantInstructionsAdded.Items.Add(instructionItem);
-            }
-        }
+
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
             PlantWindow plantWindow = new(currentUser);
@@ -148,14 +130,21 @@ namespace GreenThumbDb.Windows
 
         private void btnAddInstruction_Click(object sender, RoutedEventArgs e)
         {
-            ListViewItem itemToAdd = (ListViewItem)lstInstructionsList.SelectedItem;
-            if (itemToAdd != null)
-            {
-                InstructionModel instructionToAdd = (InstructionModel)itemToAdd.Tag;
-                instructions.Add(instructionToAdd);
+            lstPlantInstructionsAdded.Items.Clear();
+            string instructionString = txtInstruction.Text;
+            instructionStrings.Add(instructionString);
 
+            foreach (var instruction in instructionStrings)
+            {
+                ListViewItem item = new();
+                item.Tag = instruction;
+                item.Content = instruction;
+                lstPlantInstructionsAdded.Items.Add(item);
+                txtInstruction.Text = "";
             }
-            FillSecondListView();
+
+
+
 
         }
     }

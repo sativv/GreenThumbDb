@@ -1,4 +1,5 @@
 ﻿using GreenThumbDb.Database;
+using GreenThumbDb.Managers;
 using GreenThumbDb.Models;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ namespace GreenThumbDb.Windows
     {
         public PlantDetailsWindow(UserModel user, PlantModel selectedPlant)
         {
-            currentUser = user;
+
             currentPlant = selectedPlant;
 
             InitializeComponent();
@@ -37,12 +38,21 @@ namespace GreenThumbDb.Windows
             using (GreenThumbDbContext context = new())
             {
 
+                var instructionList = context.Instructions.Where(I => I.plantId == currentPlant.PlantId).ToList();
+
+                foreach (var instruction in instructionList)
+                {
+                    ListViewItem item = new ListViewItem();
+                    item.Tag = instruction;
+                    item.Content = instruction.Instruction;
+                    lstInstructions.Items.Add(item);
+                }
             }
         }
 
         private void FillFieldsAsync()
         {
-            txtPlantInfo.Text = currentPlant.Instructions.ToString();
+
             txtPlantName.Text = currentPlant.Name;
         }
         PlantModel currentPlant = new();
@@ -59,6 +69,9 @@ namespace GreenThumbDb.Windows
         {
             PlantModel plantToAdd = currentPlant;
 
+            var garden = currentUser.Garden.GardenId;
+
+
 
 
             using (GreenThumbDbContext context = new())
@@ -67,7 +80,8 @@ namespace GreenThumbDb.Windows
                 if (plantToAdd != null)
                 {
 
-                    await uow.gardenRepository.AddPlantToGarden(plantToAdd);
+
+
                 }
                 MessageBox.Show($"{plantToAdd.Name} was added to your garden!");
                 await uow.Complete();
