@@ -31,7 +31,7 @@
         <Image
             Grid.Row="1"
             Grid.Column="1"
-            Source="C:\Users\david\source\repos\GreenThumbDb\GreenThumbDb\Images\logo.png" />
+            Source="/GreenThumbDb;component/Images/logo.png" />
         <Button
             Name="btnLogin"
             Grid.Row="4"
