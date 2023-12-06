@@ -62,7 +62,8 @@
             VerticalAlignment="Center"
             Content="Plant Instruction"
             FontSize="20"
-            FontWeight="SemiBold" />
+            FontWeight="SemiBold"
+            Foreground="#668239" />
         <Label
             Grid.Row="1"
             Grid.Column="2"
@@ -70,7 +71,8 @@
             VerticalAlignment="Bottom"
             Content="Added Plant Instructions"
             FontSize="20"
-            FontWeight="SemiBold" />
+            FontWeight="SemiBold"
+            Foreground="#668239" />
 
         <Label
             Grid.Row="1"
@@ -79,7 +81,8 @@
             VerticalAlignment="bottom"
             Content="Plant Name"
             FontSize="20"
-            FontWeight="SemiBold" />
+            FontWeight="SemiBold"
+            Foreground="#668239" />
 
         <Button
             Name="btnAddPlant"
