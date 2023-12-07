@@ -69,8 +69,9 @@ namespace GreenThumbDb.Windows
             if (lstPlantList.SelectedItem != null)
             {
                 ListViewItem selectedItem = (ListViewItem)lstPlantList.SelectedItem;
-                PlantModel selectedPlant = (PlantModel)selectedItem.Tag;
-                PlantDetailsWindow plantDetailsWindow = new(currentUser, selectedPlant);
+                GardenPlantModel selectedPlant = (GardenPlantModel)selectedItem.Tag;
+                PlantModel plant = selectedPlant.Plant;
+                PlantDetailsWindow plantDetailsWindow = new(currentUser, plant);
                 plantDetailsWindow.Show();
                 Close();
             }
