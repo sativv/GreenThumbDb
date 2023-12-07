@@ -56,8 +56,20 @@ namespace GreenThumbDb.Windows
         // Live searches through plants depending  on textinput
         private async void txtSearchPlant_TextChanged(object sender, TextChangedEventArgs e)
         {
+
+
+
             lstPlantList.Items.Clear();
             string searchString = txtSearchPlant.Text;
+
+            if (string.IsNullOrEmpty(searchString))
+            {
+                lblSearch.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                lblSearch.Visibility = Visibility.Hidden;
+            }
 
             using (GreenThumbDbContext context = new())
             {

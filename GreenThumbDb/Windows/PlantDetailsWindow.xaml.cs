@@ -82,7 +82,20 @@ namespace GreenThumbDb.Windows
 
                 PlantModel plantToAdd = currentPlant;
 
+                var plantsInAllGardens = await uow.gardenPlantRepository.GetAllGardenPlants();
+                var plantsInCurrentGarden = plantsInAllGardens.Where(p => p.GardenId == currentUser.UserId);
                 var currentUserGarden = context.Gardens.Where(g => g.UserId == currentUser.UserId).FirstOrDefault();
+
+
+                bool plantExistsInGarden = false;
+                foreach (var plantInGarden in plantsInCurrentGarden)
+                {
+                    if (plantInGarden.PlantId == currentPlant.PlantId)
+                    {
+                        plantExistsInGarden = true;
+                    }
+                }
+
 
                 int plant = currentPlant.PlantId;
                 if (currentUserGarden == null)
@@ -96,13 +109,19 @@ namespace GreenThumbDb.Windows
                     GardenId = currentUserGarden.GardenId,
                 };
 
-                if (plantToAdd != null)
+                if (plantToAdd != null && plantExistsInGarden == false)
                 {
                     await uow.gardenPlantRepository.AddGardenPlant(gardenPlantModel);
 
 
                     MessageBox.Show($"{plantToAdd.Name} was added to your garden!");
 
+
+                }
+                else
+                {
+                    MessageBox.Show("Plant already exists in garden!");
+                    return;
                 }
 
                 await uow.Complete();

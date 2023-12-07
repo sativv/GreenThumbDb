@@ -27,14 +27,7 @@ namespace GreenThumbDb.Database
             return await _context.GardenPlants.ToListAsync();
         }
 
-        //public async Task Remove(int id)
-        //{
-        //    GardenPlantModel? GardenPlantToRemove = await GetById(id);
-        //    if (GardenPlantToRemove != null)
-        //    {
-        //        _context.Remove(GardenPlantToRemove.PlantId);
-        //    }
-        //}
+
 
         public async Task<GardenPlantModel?> GetById(int id)
         {

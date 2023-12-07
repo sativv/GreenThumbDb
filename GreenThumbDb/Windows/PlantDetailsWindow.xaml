@@ -26,13 +26,15 @@
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
+            <RowDefinition />
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
         <ListView
             Name="lstInstructions"
-            Grid.Row="1"
+            Grid.Row="2"
             Grid.RowSpan="2"
-            Grid.Column="2"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
             Background="Transparent"
             BorderBrush="#668239"
             FontWeight="SemiBold"
@@ -44,32 +46,32 @@
 
         <Button
             Name="btnReturn"
-            Grid.Row="3"
+            Grid.Row="4"
             Grid.Column="1"
-            Width="100"
-            Height="40"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
+            Width="105"
+            Height="35"
+            HorizontalAlignment="center"
+            VerticalAlignment="bottom"
             Background="Transparent"
             BorderBrush="#668239"
             Click="btnReturn_Click"
             Content="Return"
-            FontSize="20"
+            FontSize="14"
             FontWeight="Bold"
             Foreground="#668239" />
         <Button
             Name="btnAddToGarden"
-            Grid.Row="3"
-            Grid.Column="1"
-            Width="220"
+            Grid.Row="4"
+            Grid.Column="2"
+            Width="105"
             Height="35"
-            HorizontalAlignment="Center"
+            HorizontalAlignment="center"
             VerticalAlignment="bottom"
             Background="Transparent"
             BorderBrush="#668239"
             Click="btnAddToGarden_Click"
-            Content="Add To Your Garden"
-            FontSize="20"
+            Content="Add To Garden"
+            FontSize="14"
             FontWeight="Bold"
             Foreground="#668239" />
 
@@ -77,11 +79,12 @@
             Name="txtPlantName"
             Grid.Row="1"
             Grid.Column="1"
-            Width="220"
+            Grid.ColumnSpan="2"
+            Width="400"
             Height="120"
             VerticalAlignment="top"
             HorizontalContentAlignment="Center"
-            VerticalContentAlignment="Top"
+            VerticalContentAlignment="center"
             Background="Transparent"
             BorderBrush="Transparent"
             FontSize="26"

@@ -38,6 +38,7 @@
             Grid.ColumnSpan="2"
             Background="Transparent"
             BorderBrush="#668239"
+            FontSize="20"
             Foreground="#668239" />
         <Image
             Grid.Row="1"

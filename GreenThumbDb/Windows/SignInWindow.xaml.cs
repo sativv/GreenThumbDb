@@ -35,7 +35,7 @@ namespace GreenThumbDb.Windows
             btnLogin.IsEnabled = false;
             string username = txtUsername.Text;
             string password = txtPassword.Password;
-
+            bool loginSucess = false;
 
             if (string.IsNullOrEmpty(username))
             {
@@ -62,13 +62,25 @@ namespace GreenThumbDb.Windows
                             MyGardenWindow myGardenWindow = new(user);
                             MessageBox.Show($"Welcome {user.Username}!");
                             myGardenWindow.Show();
+                            loginSucess = true;
 
                             Close();
+
                         }
                         else if (user.Username == username && user.Password != password)
                         {
                             MessageBox.Show("Incorrect password");
+                            btnLogin.IsEnabled = true;
+                            return;
                         }
+                    }
+                    if (!loginSucess)
+                    {
+
+
+                        MessageBox.Show("That username does not exist");
+                        btnLogin.IsEnabled = true;
+                        return;
                     }
                 }
             }

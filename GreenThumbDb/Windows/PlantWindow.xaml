@@ -36,10 +36,24 @@
             Grid.RowSpan="2"
             Grid.Column="1"
             Grid.ColumnSpan="2"
+            Margin="0,12,0,0"
             Background="Transparent"
             BorderBrush="#668239"
             Foreground="#668239"
             SelectionChanged="lstPlantList_SelectionChanged_1" />
+        <Label
+            Name="lblSearch"
+            Grid.Row="3"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Margin="0,0,0,25"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Content="Search for Plants"
+            FontSize="14"
+            FontWeight="SemiBold"
+            Foreground="#668239"
+            Visibility="Visible" />
         <TextBox
             Name="txtSearchPlant"
             Grid.Row="3"
@@ -47,20 +61,13 @@
             Grid.ColumnSpan="2"
             Height="45"
             Margin="0,0,0,25"
-            HorizontalContentAlignment="Center"
+            HorizontalContentAlignment="Left"
             VerticalContentAlignment="Center"
             Background="Transparent"
             BorderBrush="#668239"
             Foreground="#668239"
             TextChanged="txtSearchPlant_TextChanged" />
-        <Label
-            Grid.Row="3"
-            Grid.Column="1"
-            VerticalAlignment="Top"
-            Content="Search for Plants"
-            FontSize="18"
-            FontWeight="SemiBold"
-            Foreground="#668239" />
+
         <Image
             Grid.Row="1"
             Grid.Column="3"
