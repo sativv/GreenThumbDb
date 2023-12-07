@@ -34,7 +34,9 @@
             Grid.RowSpan="2"
             Grid.Column="2"
             Background="Transparent"
-            BorderBrush="#668239" />
+            BorderBrush="#668239"
+            FontWeight="SemiBold"
+            Foreground="#668239" />
 
 
 
@@ -76,16 +78,17 @@
             Grid.Row="1"
             Grid.Column="1"
             Width="220"
-            Height="40"
+            Height="120"
             VerticalAlignment="top"
             HorizontalContentAlignment="Center"
-            VerticalContentAlignment="center"
+            VerticalContentAlignment="Top"
             Background="Transparent"
             BorderBrush="Transparent"
-            FontSize="20"
+            FontSize="26"
             Foreground="#668239"
             IsEnabled="False"
-            Text="HEJ" />
+            Text="ThisIsAVERYLONGplantName"
+            TextWrapping="Wrap" />
 
     </Grid>
 </Window>

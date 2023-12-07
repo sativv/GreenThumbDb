@@ -39,6 +39,7 @@ namespace GreenThumbDb.Windows
 
         UserModel currentUser = new();
 
+        // reads text input and all instructions added to the listview and adds them to the database
         private async void btnAddPlant_Click(object sender, RoutedEventArgs e)
         {
 
@@ -120,7 +121,7 @@ namespace GreenThumbDb.Windows
 
 
 
-
+        // returns user to plantwindow
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
             PlantWindow plantWindow = new(currentUser);
@@ -128,6 +129,7 @@ namespace GreenThumbDb.Windows
             Close();
         }
 
+        // reads the instruction textbox and adds the item to the listview
         private void btnAddInstruction_Click(object sender, RoutedEventArgs e)
         {
             lstPlantInstructionsAdded.Items.Clear();

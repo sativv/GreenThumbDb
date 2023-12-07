@@ -31,6 +31,7 @@ namespace GreenThumbDb.Windows
             FillList();
         }
 
+        // fills the listview with every item from the gardenplant joint table where userid is the same as current logged in user id
         private void FillList()
         {
             using (GreenThumbDbContext context = new())
@@ -51,6 +52,7 @@ namespace GreenThumbDb.Windows
 
         public UserModel currentUser { get; }
 
+        // sends user to the plantWindow
         private void btnBrowsePlants_Click(object sender, RoutedEventArgs e)
         {
             PlantWindow plantWindow = new PlantWindow(currentUser);
@@ -58,37 +60,8 @@ namespace GreenThumbDb.Windows
             Close();
         }
 
-        //private async void btnRemove_Click(object sender, RoutedEventArgs e)
-        //{
-        //    ListViewItem itemToRemove = (ListViewItem)lstPlantList.SelectedItem;
 
-        //    using (GreenThumbDbContext context = new())
-        //    {
-        //        GreenThumbUoW uow = new(context);
-
-        //        if (itemToRemove != null)
-        //        {
-        //            GardenPlantModel modelToRemove = (GardenPlantModel)itemToRemove.Tag;
-        //            await uow.gardenPlantRepository.Remove(itemToRemove.);
-
-        //        }
-        //    }
-
-
-        //}
-
-        //private void lstPlantList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-        //    if (lstPlantList.SelectedIndex != -1)
-        //    {
-        //        btnRemove.Visibility = Visibility.Visible;
-
-        //    }
-        //    else
-        //    {
-        //        btnRemove.Visibility = Visibility.Hidden;
-        //    }
-        //}
+        // sends the selected listviewitem (plant) to the plantDetailsWindow and opens it
 
         private void btnPlantInfo_Click(object sender, RoutedEventArgs e)
         {

@@ -35,7 +35,7 @@ namespace GreenThumbDb.Windows
             Close();
         }
 
-        // reads input windows and registers user, checks if username is already taken.
+        // reads input windows and registers user, checks if username is already taken. 
         private async void btnRegister_Click(object sender, RoutedEventArgs e)
         {
             string username = txtUsername.Text;

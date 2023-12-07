@@ -22,6 +22,7 @@ namespace GreenThumbDb
             InitializeComponent();
         }
 
+        // send  user to the login page
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             SignInWindow signInWindow = new();
@@ -29,6 +30,7 @@ namespace GreenThumbDb
             Close();
         }
 
+        // sends user to the register page
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
             RegisterWindow registerWindow = new RegisterWindow();

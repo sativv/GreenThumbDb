@@ -38,6 +38,7 @@
             Grid.ColumnSpan="2"
             Background="Transparent"
             BorderBrush="#668239"
+            Foreground="#668239"
             SelectionChanged="lstPlantList_SelectionChanged_1" />
         <TextBox
             Name="txtSearchPlant"
@@ -65,7 +66,7 @@
             Grid.Column="3"
             Height="75"
             VerticalAlignment="Bottom"
-               Source="/GreenThumbDb;component/Images/logonotxt.png" />
+            Source="/GreenThumbDb;component/Images/logonotxt.png" />
         <Label
             Grid.Row="1"
             Grid.Column="3"

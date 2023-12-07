@@ -29,7 +29,7 @@ namespace GreenThumbDb.Windows
         }
 
 
-        // logs in user
+        // reads the username and password textboes. First checks if username exists in the list of users and then checks if password is correct
         private async void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             btnLogin.IsEnabled = false;
@@ -73,6 +73,13 @@ namespace GreenThumbDb.Windows
                 }
             }
             btnLogin.IsEnabled = true;
+        }
+
+        private void btnReturn_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new();
+            mainWindow.Show();
+            Close();
         }
     }
 }
