@@ -71,7 +71,7 @@ namespace GreenThumbDb.Windows
 
         }
 
-        // adds the current plant to the currently signed in users garden
+        // adds the current plant to the currently signed in users garden & checks if the plant already exists in your garden
         private async void btnAddToGarden_Click(object sender, RoutedEventArgs e)
         {
 

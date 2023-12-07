@@ -34,6 +34,7 @@ namespace GreenThumbDb.Windows
         // fills the listview with every item from the gardenplant joint table where userid is the same as current logged in user id
         private void FillList()
         {
+            lstPlantList.Items.Clear();
             using (GreenThumbDbContext context = new())
             {
                 GreenThumbUoW uow = new(context);
@@ -76,6 +77,30 @@ namespace GreenThumbDb.Windows
             else
             {
                 MessageBox.Show("Please select a plant");
+            }
+        }
+
+        private void lstPlantList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            btnRemove.Visibility = Visibility.Visible;
+        }
+
+        private async void btnRemove_Click(object sender, RoutedEventArgs e)
+        {
+            ListViewItem itemToRemove = (ListViewItem)lstPlantList.SelectedItem;
+
+            using (GreenThumbDbContext context = new())
+            {
+                GreenThumbUoW uow = new(context);
+
+                if (itemToRemove != null)
+                {
+                    GardenPlantModel gardenPlantToRemove = (GardenPlantModel)itemToRemove.Tag;
+
+                    await uow.gardenPlantRepository.Remove(gardenPlantToRemove);
+                    await uow.Complete();
+                    FillList();
+                }
             }
         }
     }
