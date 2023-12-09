@@ -161,10 +161,74 @@ namespace GreenThumbDb.Database
                 InstructionId = 10,
                 Instruction = "Thrives in well-draining soil and prefers drier conditions; trim regularly for a fragrant and compact rosemary bush.",
                 plantId = 10
-            }); ;
-
-
+            }, new InstructionModel
+            {
+                InstructionId = 11,
+                Instruction = "Place in indirect sunlight and water thoroughly, allowing the soil to dry between waterings for optimal growth.",
+                plantId = 1
+            },
+    new InstructionModel
+    {
+        InstructionId = 12,
+        Instruction = "Create a humid environment and provide filtered sunlight to promote healthy, vibrant foliage for this tropical beauty.",
+        plantId = 2
+    },
+    new InstructionModel
+    {
+        InstructionId = 13,
+        Instruction = "Water moderately and place in a location with bright, indirect light for stunning and long-lasting blooms.",
+        plantId = 3
+    },
+    new InstructionModel
+    {
+        InstructionId = 14,
+        Instruction = "Plant in nutrient-rich soil and water consistently to encourage the growth of flavorful and aromatic herbs.",
+        plantId = 4
+    },
+    new InstructionModel
+    {
+        InstructionId = 15,
+        Instruction = "Provide well-draining soil and ample sunlight, and water sparingly to maintain the distinctive shape of this succulent.",
+        plantId = 5
+    },
+    new InstructionModel
+    {
+        InstructionId = 16,
+        Instruction = "Place in a sunny location and water regularly, allowing the soil to dry slightly between waterings for optimal health.",
+        plantId = 6
+    },
+    new InstructionModel
+    {
+        InstructionId = 17,
+        Instruction = "Create a trellis for support, plant in full sun, and water consistently to cultivate a thriving and productive vine.",
+        plantId = 7
+    },
+    new InstructionModel
+    {
+        InstructionId = 18,
+        Instruction = "Ensure well-draining soil and provide bright, indirect light for this delicate fern to flourish in a controlled environment.",
+        plantId = 8
+    },
+    new InstructionModel
+    {
+        InstructionId = 19,
+        Instruction = "Water moderately and place in a location with filtered sunlight to encourage the growth of lush and colorful leaves.",
+        plantId = 9
+    },
+    new InstructionModel
+    {
+        InstructionId = 20,
+        Instruction = "Plant in a spacious container with rich soil, water consistently, and provide ample sunlight for robust and healthy growth.",
+        plantId = 10
+    });
         }
+
+
+
+
+
+
+
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -175,9 +239,11 @@ namespace GreenThumbDb.Database
 
 
         }
-
-
-
-
     }
 }
+
+
+
+
+
+
