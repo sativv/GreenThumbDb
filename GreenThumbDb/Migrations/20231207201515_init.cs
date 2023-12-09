@@ -4,7 +4,7 @@
 
 namespace GreenThumbDb.Migrations
 {
-    public partial class initialMigration : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -98,6 +98,50 @@ namespace GreenThumbDb.Migrations
                         principalTable: "Plants",
                         principalColumn: "PlantId",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Plants",
+                columns: new[] { "PlantId", "Name", "instructionId" },
+                values: new object[,]
+                {
+                    { 1, "Sunshine Succulent", 1 },
+                    { 2, "Mystic Moonflower", 2 },
+                    { 3, "Zen Zephyr Orchid", 3 },
+                    { 4, "Crimson Cascade Fern", 4 },
+                    { 5, "Azure Breeze Bluebell", 5 },
+                    { 6, "Silver Serenity Sage", 6 },
+                    { 7, "Velvet Violet Verbena", 7 },
+                    { 8, "Emerald Echo Eucalyptus", 8 },
+                    { 9, "Golden Glow Gazania", 9 },
+                    { 10, "Rustic Rosemary Radiance", 10 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "UserId", "Password", "Username" },
+                values: new object[] { 1, "WtoQ5Wt0fYftPT0IJdYirA==", "david" });
+
+            migrationBuilder.InsertData(
+                table: "Gardens",
+                columns: new[] { "GardenId", "Name", "UserId" },
+                values: new object[] { 1, "garden of david", 1 });
+
+            migrationBuilder.InsertData(
+                table: "Instructions",
+                columns: new[] { "InstructionId", "Instruction", "plantId" },
+                values: new object[,]
+                {
+                    { 1, "Place in a sunny spot and water sparingly to keep this desert beauty thriving", 1 },
+                    { 2, "Plant in well-draining soil and water in the evening for enchanting blooms under the moonlight.", 2 },
+                    { 3, "Provide high humidity and a peaceful environment for this orchid to flourish; avoid direct sunlight.", 3 },
+                    { 4, "Keep the soil consistently moist and mist the fern regularly to maintain its lush, cascading fronds.", 4 },
+                    { 5, "Plant in a cool, shaded area and water regularly for a burst of blue blooms in the spring.", 5 },
+                    { 6, "Trim regularly for bushier growth and plant in well-draining soil to prevent waterlogging.", 6 },
+                    { 7, " Allow the soil to dry between watering, and place in a sunny location to enjoy the vibrant violet blossoms.", 7 },
+                    { 8, "Provide ample sunlight and well-draining soil; prune occasionally for a bushier appearance and enhanced aroma.", 8 },
+                    { 9, "Plant in a sunny spot with good drainage and water sparingly to enjoy the radiant golden blooms.", 9 },
+                    { 10, "Thrives in well-draining soil and prefers drier conditions; trim regularly for a fragrant and compact rosemary bush.", 10 }
                 });
 
             migrationBuilder.CreateIndex(

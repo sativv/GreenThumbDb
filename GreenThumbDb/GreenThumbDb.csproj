@@ -32,4 +32,8 @@
     <Resource Include="Images\logonotxt.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

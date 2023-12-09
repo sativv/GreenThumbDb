@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GreenThumbDb.Managers
 {
@@ -15,6 +10,7 @@ namespace GreenThumbDb.Managers
         {
             if (File.Exists("C:\\Users\\david\\OneDrive\\Skrivbord\\key.txt"))
             {
+
                 return File.ReadAllText("C:\\Users\\david\\OneDrive\\Skrivbord\\key.txt");
             }
             else

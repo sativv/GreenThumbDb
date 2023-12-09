@@ -4,13 +4,6 @@ using EntityFrameworkCore.EncryptColumn.Util;
 using GreenThumbDb.Managers;
 using GreenThumbDb.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using System.Windows;
 
 namespace GreenThumbDb.Database
 {
@@ -50,7 +43,7 @@ namespace GreenThumbDb.Database
             {
                 UserId = 1,
                 GardenId = 1,
-                Name = "david garden"
+                Name = "garden of david"
             });
 
 

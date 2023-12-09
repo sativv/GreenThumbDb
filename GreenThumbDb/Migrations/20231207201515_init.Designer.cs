@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GreenThumbDb.Migrations
 {
     [DbContext(typeof(GreenThumbDbContext))]
-    [Migration("20231204120430_seedData")]
-    partial class seedData
+    [Migration("20231207201515_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,6 +44,14 @@ namespace GreenThumbDb.Migrations
                         .IsUnique();
 
                     b.ToTable("Gardens");
+
+                    b.HasData(
+                        new
+                        {
+                            GardenId = 1,
+                            Name = "garden of david",
+                            UserId = 1
+                        });
                 });
 
             modelBuilder.Entity("GreenThumbDb.Models.GardenPlantModel", b =>
@@ -251,7 +259,7 @@ namespace GreenThumbDb.Migrations
                         new
                         {
                             UserId = 1,
-                            Password = "WurYLWDQvNzuUtvXe+jTEg==",
+                            Password = "WtoQ5Wt0fYftPT0IJdYirA==",
                             Username = "david"
                         });
                 });

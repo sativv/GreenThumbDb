@@ -1,18 +1,6 @@
 ﻿using GreenThumbDb.Database;
 using GreenThumbDb.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace GreenThumbDb.Windows
 {
@@ -76,7 +64,7 @@ namespace GreenThumbDb.Windows
                     await uow.Complete();
                     GardenModel newGarden = new()
                     {
-                        Name = username + " garden",
+                        Name = "Garden of " + username,
                         UserId = newUser.UserId
                     };
                     await uow.gardenRepository.AddGarden(newGarden);

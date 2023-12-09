@@ -42,6 +42,14 @@ namespace GreenThumbDb.Migrations
                         .IsUnique();
 
                     b.ToTable("Gardens");
+
+                    b.HasData(
+                        new
+                        {
+                            GardenId = 1,
+                            Name = "garden of david",
+                            UserId = 1
+                        });
                 });
 
             modelBuilder.Entity("GreenThumbDb.Models.GardenPlantModel", b =>
@@ -249,7 +257,7 @@ namespace GreenThumbDb.Migrations
                         new
                         {
                             UserId = 1,
-                            Password = "WurYLWDQvNzuUtvXe+jTEg==",
+                            Password = "WtoQ5Wt0fYftPT0IJdYirA==",
                             Username = "david"
                         });
                 });
