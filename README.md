@@ -1,4 +1,5 @@
 ## Sammanfattning & analys GreenGarden
+(FilePath behöver möjligtvis ändras för KeyManager)
 
 I detta projektet har jag skapat en applikation där användaren kan lägga till olika plantor tillsammans med kopplade skötselråd samt möjligheten att lägga till dessa i sin egna trädgårdslista.
 
